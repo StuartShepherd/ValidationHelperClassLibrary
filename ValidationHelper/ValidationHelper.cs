@@ -29,6 +29,14 @@ public class ValidationHelper
             : Convert.ToString(value)!;
 
     /// <summary>
+    /// This function returns true if the value is a decimal, or it returns false.
+    /// </summary>
+    public static bool IsDecimal(object value) =>
+        IsNull(value)
+            ? false
+            : decimal.TryParse(Convert.ToString(value), out _);
+
+    /// <summary>
     /// This function returns true if the value is an integer, or it returns false.
     /// </summary>
     public static bool IsInteger(object value) =>

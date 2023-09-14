@@ -40,6 +40,23 @@ public class Tests
     [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]
+    [DataRow(3.1415926535, true)]
+    [DataRow(int.MinValue, true)]
+    [DataRow(int.MaxValue, true)]
+    [DataRow(long.MinValue, true)]
+    [DataRow(long.MaxValue, true)]
+    [DataRow(double.MinValue, false)]
+    [DataRow(double.MaxValue, false)]
+    public void IsDecimalTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsDecimal(x);
+        Assert.AreEqual(expected, actual);
+    }
+
+
+    [DataTestMethod]
+    [DataRow(null, false)]
+    [DataRow("test", false)]
     [DataRow(3.1415926535, false)]
     [DataRow(int.MinValue, true)]
     [DataRow(int.MaxValue, true)]

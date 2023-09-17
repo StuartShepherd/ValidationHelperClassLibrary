@@ -13,7 +13,7 @@
 public class ValidationHelper
 {
     /// <summary>
-    /// This function returns a decimal representation of an object, and if the object is null, it returns default value.
+    /// This function returns a decimal representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     public static decimal GetDecimal(object value, decimal defaultValue) =>
         IsDecimal(value)
@@ -21,7 +21,7 @@ public class ValidationHelper
             : defaultValue;
 
     /// <summary>
-    /// This function returns an integer representation of an object, and if the object is null, it returns default value.
+    /// This function returns an integer representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     public static int GetInteger(object value, int defaultValue) =>
         IsInteger(value)
@@ -29,7 +29,7 @@ public class ValidationHelper
             : defaultValue;
 
     /// <summary>
-    /// This function returns a string representation of an object, and if the object is null, it returns default value.
+    /// This function returns a string representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     public static string GetString(object value, string defaultValue) =>
         IsNull(value) 

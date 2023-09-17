@@ -13,6 +13,14 @@
 public class ValidationHelper
 {
     /// <summary>
+    /// This function returns a decimal representation of an object, and if the object is null, it returns default value.
+    /// </summary>
+    public static decimal GetDecimal(object value, decimal defaultValue) =>
+        IsDecimal(value)
+            ? Convert.ToDecimal(value)
+            : defaultValue;
+
+    /// <summary>
     /// This function returns an integer representation of an object, and if the object is null, it returns default value.
     /// </summary>
     public static int GetInteger(object value, int defaultValue) =>

@@ -3,6 +3,26 @@ namespace ValidationHelper.Tests;
 [TestClass]
 public class Tests
 {
+    public static IEnumerable<object[]> GetDecimalTestData =>
+        new[] {
+                new object[] { null, 1m, 1m },
+                new object[] { "test", 1m, 1m },
+                new object[] { int.MinValue, 1m, Convert.ToDecimal(int.MinValue) },
+                new object[] { int.MaxValue, 1m, Convert.ToDecimal(int.MaxValue) },
+                new object[] { long.MinValue, 1m, Convert.ToDecimal(long.MinValue) },
+                new object[] { long.MaxValue, 1m, Convert.ToDecimal(long.MaxValue) },
+                new object[] { decimal.MinValue, 1m, decimal.MinValue },
+                new object[] { decimal.MaxValue, 1m, decimal.MaxValue },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetDecimalTestData))]
+    public void GetDecimalTest(object x, decimal y, decimal expected)
+    {
+        var actual = ValidationHelper.GetDecimal(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
     [DataTestMethod]
     [DataRow(null, 1, 1)]
     [DataRow(3.14, 1, 1)]

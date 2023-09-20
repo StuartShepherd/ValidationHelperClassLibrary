@@ -45,6 +45,14 @@ public class ValidationHelper
             : decimal.TryParse(Convert.ToString(value), out _);
 
     /// <summary>
+    /// This function returns true if the value is a double, or it returns false.
+    /// </summary>
+    public static bool IsDouble(object value) =>
+        IsNull(value)
+            ? false
+            : double.TryParse(Convert.ToString(value), out _);
+
+    /// <summary>
     /// This function returns true if the value is an integer, or it returns false.
     /// </summary>
     public static bool IsInteger(object value) =>

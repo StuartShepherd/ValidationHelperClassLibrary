@@ -73,6 +73,21 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    [DataTestMethod]
+    [DataRow(null, false)]
+    [DataRow("test", false)]
+    [DataRow(3.1415926535, true)]
+    [DataRow(int.MinValue, true)]
+    [DataRow(int.MaxValue, true)]
+    [DataRow(long.MinValue, true)]
+    [DataRow(long.MaxValue, true)]
+    [DataRow(double.MinValue, true)]
+    [DataRow(double.MaxValue, true)]
+    public void IsDoubleTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsDouble(x);
+        Assert.AreEqual(expected, actual);
+    }
 
     [DataTestMethod]
     [DataRow(null, false)]

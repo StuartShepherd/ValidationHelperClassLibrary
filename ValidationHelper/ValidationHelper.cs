@@ -21,6 +21,14 @@ public class ValidationHelper
             : defaultValue;
 
     /// <summary>
+    /// This function returns a double representation of an object. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    public static double GetDouble(object value, double defaultValue) =>
+        IsDouble(value)
+            ? Convert.ToDouble(value)
+            : defaultValue;
+
+    /// <summary>
     /// This function returns an integer representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     public static int GetInteger(object value, int defaultValue) =>

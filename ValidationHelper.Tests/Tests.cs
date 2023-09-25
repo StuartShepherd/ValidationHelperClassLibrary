@@ -25,6 +25,19 @@ public class Tests
 
     [DataTestMethod]
     [DataRow(null, 1, 1)]
+    [DataRow(3.14, 1, 3.14)]
+    [DataRow(100, 1, 100)]
+    [DataRow("test", 0, 0)]
+    [DataRow(double.MinValue, 1, double.MinValue)]
+    [DataRow(double.MaxValue, 1, double.MaxValue)]
+    public void GetDoubleTest(object x, double y, double expected)
+    {
+        var actual = ValidationHelper.GetDouble(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [DataTestMethod]
+    [DataRow(null, 1, 1)]
     [DataRow(3.14, 1, 1)]
     [DataRow(100, 1, 100)]
     [DataRow("test", 0, 0)]

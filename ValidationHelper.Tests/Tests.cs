@@ -45,13 +45,22 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
-    [DataTestMethod]
-    [DataRow(null, 1, 1)]
-    [DataRow(3.14, 1, 1)]
-    [DataRow(100, 1, 100)]
-    [DataRow("test", 0, 0)]
-    [DataRow(int.MinValue, 1, int.MinValue)]
-    [DataRow(int.MaxValue, 1, int.MaxValue)]
+    public static IEnumerable<object[]> GetIntegerTestData =>
+        new[] {
+            new object[] { null, 1, 1 },
+            new object[] { "test", 1, 1 },
+            new object[] { int.MinValue, 1, int.MinValue },
+            new object[] { int.MaxValue, 1, int.MaxValue },
+            new object[] { long.MinValue, 1, 1 },
+            new object[] { long.MaxValue, 1, 1 },
+            new object[] { decimal.MinValue, 1, 1 },
+            new object[] { decimal.MaxValue, 1, 1 },
+            new object[] { double.MinValue, 1, 1 },
+            new object[] { double.MaxValue, 1, 1 },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetIntegerTestData))]
     public void GetIntegerTest(object x, int y, int expected)
     {
         var actual = ValidationHelper.GetInteger(x, y);

@@ -5,14 +5,14 @@ public class Tests
 {
     public static IEnumerable<object[]> GetDecimalTestData =>
         new[] {
-                new object[] { null, 1m, 1m },
-                new object[] { "test", 1m, 1m },
-                new object[] { int.MinValue, 1m, Convert.ToDecimal(int.MinValue) },
-                new object[] { int.MaxValue, 1m, Convert.ToDecimal(int.MaxValue) },
-                new object[] { long.MinValue, 1m, Convert.ToDecimal(long.MinValue) },
-                new object[] { long.MaxValue, 1m, Convert.ToDecimal(long.MaxValue) },
-                new object[] { decimal.MinValue, 1m, decimal.MinValue },
-                new object[] { decimal.MaxValue, 1m, decimal.MaxValue },
+            new object[] { null, 1m, 1m },
+            new object[] { "test", 1m, 1m },
+            new object[] { int.MinValue, 1m, Convert.ToDecimal(int.MinValue) },
+            new object[] { int.MaxValue, 1m, Convert.ToDecimal(int.MaxValue) },
+            new object[] { long.MinValue, 1m, Convert.ToDecimal(long.MinValue) },
+            new object[] { long.MaxValue, 1m, Convert.ToDecimal(long.MaxValue) },
+            new object[] { decimal.MinValue, 1m, decimal.MinValue },
+            new object[] { decimal.MaxValue, 1m, decimal.MaxValue },
         };
 
     [TestMethod]
@@ -23,13 +23,22 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
-    [DataTestMethod]
-    [DataRow(null, 1, 1)]
-    [DataRow(3.14, 1, 3.14)]
-    [DataRow(100, 1, 100)]
-    [DataRow("test", 0, 0)]
-    [DataRow(double.MinValue, 1, double.MinValue)]
-    [DataRow(double.MaxValue, 1, double.MaxValue)]
+    public static IEnumerable<object[]> GetDoubleTestData =>
+        new[] {
+            new object[] { null, 1, 1 },
+            new object[] { "test", 1, 1 },
+            new object[] { int.MinValue, 1, Convert.ToDouble(int.MinValue) },
+            new object[] { int.MaxValue, 1, Convert.ToDouble(int.MaxValue) },
+            new object[] { long.MinValue, 1, Convert.ToDouble(long.MinValue) },
+            new object[] { long.MaxValue, 1, Convert.ToDouble(long.MaxValue) },
+            new object[] { decimal.MinValue, 1, Convert.ToDouble(decimal.MinValue) },
+            new object[] { decimal.MaxValue, 1, Convert.ToDouble(decimal.MaxValue) },
+            new object[] { double.MinValue, 1, double.MinValue },
+            new object[] { double.MaxValue, 1, double.MaxValue },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetDoubleTestData))]
     public void GetDoubleTest(object x, double y, double expected)
     {
         var actual = ValidationHelper.GetDouble(x, y);
@@ -51,15 +60,15 @@ public class Tests
 
     public static IEnumerable<object[]> GetStringTestData =>
         new[] {
-                new object[] { null, "test", "test" },
-                new object[] { "test", null, "test" },
-                new object[] { int.MinValue, null, Convert.ToString(int.MinValue) },
-                new object[] { int.MaxValue, null, Convert.ToString(int.MaxValue) },
-                new object[] { long.MinValue, null, Convert.ToString(long.MinValue) },
-                new object[] { long.MaxValue, null, Convert.ToString(long.MaxValue) },
-                new object[] { decimal.MinValue, null, Convert.ToString(decimal.MinValue) },
-                new object[] { decimal.MaxValue, null, Convert.ToString(decimal.MaxValue) },
-                new object[] { DateTime.MinValue, null, Convert.ToString(DateTime.MinValue) },
+            new object[] { null, "test", "test" },
+            new object[] { "test", null, "test" },
+            new object[] { int.MinValue, null, Convert.ToString(int.MinValue) },
+            new object[] { int.MaxValue, null, Convert.ToString(int.MaxValue) },
+            new object[] { long.MinValue, null, Convert.ToString(long.MinValue) },
+            new object[] { long.MaxValue, null, Convert.ToString(long.MaxValue) },
+            new object[] { decimal.MinValue, null, Convert.ToString(decimal.MinValue) },
+            new object[] { decimal.MaxValue, null, Convert.ToString(decimal.MaxValue) },
+            new object[] { DateTime.MinValue, null, Convert.ToString(DateTime.MinValue) },
         };
 
     [TestMethod]

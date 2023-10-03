@@ -37,6 +37,14 @@ public class ValidationHelper
             : defaultValue;
 
     /// <summary>
+    /// This function returns a long representation of an object. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    public static long GetLong(object value, long defaultValue) =>
+        IsLong(value)
+            ? Convert.ToInt64(value)
+            : defaultValue;
+
+    /// <summary>
     /// This function returns a string representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     public static string GetString(object value, string defaultValue) =>

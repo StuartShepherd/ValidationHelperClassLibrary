@@ -67,6 +67,28 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> GetLongTestData =>
+        new[] {
+            new object[] { null, 1, 1 },
+            new object[] { "test", 1, 1 },
+            new object[] { int.MinValue, 1, int.MinValue },
+            new object[] { int.MaxValue, 1, int.MaxValue },
+            new object[] { long.MinValue, 1, long.MinValue },
+            new object[] { long.MaxValue, 1, long.MaxValue },
+            new object[] { decimal.MinValue, 1, 1 },
+            new object[] { decimal.MaxValue, 1, 1 },
+            new object[] { double.MinValue, 1, 1 },
+            new object[] { double.MaxValue, 1, 1 },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetLongTestData))]
+    public void GetLongTest(object x, long y, long expected)
+    {
+        var actual = ValidationHelper.GetLong(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
     public static IEnumerable<object[]> GetStringTestData =>
         new[] {
             new object[] { null, "test", "test" },

@@ -53,6 +53,23 @@ public class ValidationHelper
             : Convert.ToString(value)!;
 
     /// <summary>
+    /// This function returns true if the value is a boolean, or it returns false.
+    /// </summary>
+    public static bool IsBoolean(object value)
+    {
+        if (IsNull(value))
+            return false;
+
+        if (value is bool)
+            return true;
+
+        if (IsStringBoolean(value.ToString()!))
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
     /// This function returns true if the value is a decimal, or it returns false.
     /// </summary>
     public static bool IsDecimal(object value) =>
@@ -89,4 +106,22 @@ public class ValidationHelper
     /// </summary>
     public static bool IsNull(object value) =>
         value is null;
+
+    /// <summary>
+    /// This function returns true for "true" and "1", returns "false" or "0", or it returns false.
+    /// </summary>
+    private static bool IsStringBoolean(string value)
+    {
+        if (IsNull(value))
+            return false;
+
+        var lowerInvariant = value.ToLowerInvariant();
+        if (lowerInvariant == "true" || lowerInvariant == "1")
+            return true;
+
+        if (lowerInvariant == "false" || lowerInvariant == "0")
+            return true;
+
+        return false;
+    }
 }

@@ -112,6 +112,22 @@ public class Tests
 
     [DataTestMethod]
     [DataRow(null, false)]
+    [DataRow(2, false)]
+    [DataRow("test", false)]
+    [DataRow(0, true)]
+    [DataRow(1, true)]
+    [DataRow("false", true)]
+    [DataRow("true", true)]
+    [DataRow(true, true)]
+    [DataRow(false, true)]
+    public void IsBooleanTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsBoolean(x);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [DataTestMethod]
+    [DataRow(null, false)]
     [DataRow("test", false)]
     [DataRow(3.1415926535, true)]
     [DataRow(int.MinValue, true)]

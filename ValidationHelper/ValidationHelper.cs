@@ -15,6 +15,9 @@ public class ValidationHelper
     /// <summary>
     /// This function returns a decimal representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>Decimal representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
     public static decimal GetDecimal(object value, decimal defaultValue) =>
         IsDecimal(value)
             ? Convert.ToDecimal(value)
@@ -23,6 +26,9 @@ public class ValidationHelper
     /// <summary>
     /// This function returns a double representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>Double representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
     public static double GetDouble(object value, double defaultValue) =>
         IsDouble(value)
             ? Convert.ToDouble(value)
@@ -31,6 +37,9 @@ public class ValidationHelper
     /// <summary>
     /// This function returns an integer representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>Integer representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
     public static int GetInteger(object value, int defaultValue) =>
         IsInteger(value)
             ? Convert.ToInt32(value)
@@ -39,6 +48,9 @@ public class ValidationHelper
     /// <summary>
     /// This function returns a long representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>Long representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
     public static long GetLong(object value, long defaultValue) =>
         IsLong(value)
             ? Convert.ToInt64(value)
@@ -47,6 +59,9 @@ public class ValidationHelper
     /// <summary>
     /// This function returns a string representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>String representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
     public static string GetString(object value, string defaultValue) =>
         IsNull(value) 
             ? defaultValue 
@@ -55,6 +70,8 @@ public class ValidationHelper
     /// <summary>
     /// This function returns true if the value is a boolean, or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a boolean value; otherwise, it returns false.</returns>
     public static bool IsBoolean(object value)
     {
         if (IsNull(value))
@@ -72,6 +89,8 @@ public class ValidationHelper
     /// <summary>
     /// This function returns true if the value is a decimal, or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a decimal value; otherwise, it returns false.</returns>
     public static bool IsDecimal(object value) =>
         IsNull(value)
             ? false
@@ -80,6 +99,8 @@ public class ValidationHelper
     /// <summary>
     /// This function returns true if the value is a double, or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param> 
+    /// <returns>True if the specified object can be interpreted as a double value; otherwise, it returns false.</returns>
     public static bool IsDouble(object value) =>
         IsNull(value)
             ? false
@@ -88,6 +109,8 @@ public class ValidationHelper
     /// <summary>
     /// This function returns true if the value is an integer, or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a integer value; otherwise, it returns false.</returns>
     public static bool IsInteger(object value) =>
         IsNull(value) 
             ? false 
@@ -96,20 +119,26 @@ public class ValidationHelper
     /// <summary>
     /// This function returns true if the value is a long, or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a long value; otherwise, it returns false.</returns>
     public static bool IsLong(object value) =>
         IsNull(value)
             ? false
             : long.TryParse(Convert.ToString(value), out _);
 
     /// <summary>
-    /// This function returns true if the value is null, or it returns false.
+    /// This function returns true if the value is null, or it returns false.    
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a null value; otherwise, it returns false.</returns>
     public static bool IsNull(object value) =>
         value is null;
 
     /// <summary>
     /// This function returns true for "true" and "1", returns "false" or "0", or it returns false.
     /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the input is "true" or "1", returns false if the input is "false" or "0"; otherwise, it returns false.</returns>
     private static bool IsStringBoolean(string value)
     {
         if (IsNull(value))

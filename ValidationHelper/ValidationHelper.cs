@@ -164,10 +164,10 @@ public class ValidationHelper
         value is null;
 
     /// <summary>
-    /// This function returns true for "true" and "1", returns "false" or "0", or it returns false.
+    /// This function returns true for "true", "1", "false" or "0", or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>
-    /// <returns>True if the input is "true" or "1", returns false if the input is "false" or "0"; otherwise, it returns false.</returns>
+    /// <returns>True if the input is "true", "1", "false" or "0"; otherwise, it returns false.</returns>
     private static bool IsStringBoolean(string value)
     {
         if (IsNull(value))

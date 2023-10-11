@@ -13,6 +13,35 @@
 public class ValidationHelper
 {
     /// <summary>
+    /// This function returns a boolean representation of an object. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    /// <param name="value">Value to convert</param>
+    /// <param name="defaultValue">Default value</param>
+    /// <returns>Boolean representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
+    public static bool GetBoolean(object value, bool defaultValue)
+    {
+        if (IsNull(value))
+            return defaultValue;
+
+        if (IsBoolean(value))
+            return Convert.ToBoolean(value);
+
+        if (IsStringBoolean(GetString(value, String.Empty)))
+            return GetBooleanFromString(value.ToString()!, defaultValue);
+
+        bool flag;
+        try
+        {
+            flag = Convert.ToBoolean(value);
+        }
+        catch
+        {
+            return defaultValue;
+        }
+        return flag;
+    }
+
+    /// <summary>
     /// This function returns a decimal representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     /// <param name="value">The object to convert.</param>
@@ -152,5 +181,26 @@ public class ValidationHelper
             return true;
 
         return false;
+    }
+
+    /// <summary>
+    /// This function returns true for "true" and "1", returns false for "false" or "0"; otherwise, it returns the specified default value.
+    /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>True if the input is "true" or "1", returns false if the input is "false" or "0"; otherwise, it returns the specified default value.</returns>
+    private static bool GetBooleanFromString(string value, bool defaultValue)
+    {
+        if (IsNull(value))
+            return defaultValue;
+
+        var lowerInvariant = value.ToLowerInvariant();
+        if (lowerInvariant == "true" || lowerInvariant == "1")
+            return true;
+
+        if ((lowerInvariant == "false") || (lowerInvariant == "0"))
+            return false;
+
+        return defaultValue;
     }
 }

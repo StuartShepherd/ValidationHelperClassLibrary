@@ -3,6 +3,25 @@ namespace ValidationHelper.Tests;
 [TestClass]
 public class Tests
 {
+    [TestMethod]
+    [DataRow(null, false, false)]
+    [DataRow(null, true, true)]
+    [DataRow("test", false, false)]
+    [DataRow("test", true, true)]
+    [DataRow(-1, false, true)]
+    [DataRow(0, false, false)]
+    [DataRow(1, false, true)]
+    [DataRow(2, false, true)]
+    [DataRow("false", true, false)]
+    [DataRow("true", true, true)]
+    [DataRow(false, true, false)]
+    [DataRow(false, false, false)]
+    public void GetBooleanTest(object x, bool y, bool expected)
+    {
+        var actual = ValidationHelper.GetBoolean(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
     public static IEnumerable<object[]> GetDecimalTestData =>
         new[] {
             new object[] { null, 1m, 1m },

@@ -24,7 +24,7 @@ public class Tests
 
     public static IEnumerable<object[]> GetDecimalTestData =>
         new[] {
-            new object[] { null, 1m, 1m },
+            new object[] { null!, 1m, 1m },
             new object[] { "test", 1m, 1m },
             new object[] { int.MinValue, 1m, Convert.ToDecimal(int.MinValue) },
             new object[] { int.MaxValue, 1m, Convert.ToDecimal(int.MaxValue) },
@@ -44,7 +44,7 @@ public class Tests
 
     public static IEnumerable<object[]> GetDoubleTestData =>
         new[] {
-            new object[] { null, 1, 1 },
+            new object[] { null!, 1, 1 },
             new object[] { "test", 1, 1 },
             new object[] { int.MinValue, 1, Convert.ToDouble(int.MinValue) },
             new object[] { int.MaxValue, 1, Convert.ToDouble(int.MaxValue) },
@@ -66,7 +66,7 @@ public class Tests
 
     public static IEnumerable<object[]> GetIntegerTestData =>
         new[] {
-            new object[] { null, 1, 1 },
+            new object[] { null!, 1, 1 },
             new object[] { "test", 1, 1 },
             new object[] { int.MinValue, 1, int.MinValue },
             new object[] { int.MaxValue, 1, int.MaxValue },
@@ -88,7 +88,7 @@ public class Tests
 
     public static IEnumerable<object[]> GetLongTestData =>
         new[] {
-            new object[] { null, 1, 1 },
+            new object[] { null!, 1, 1 },
             new object[] { "test", 1, 1 },
             new object[] { int.MinValue, 1, int.MinValue },
             new object[] { int.MaxValue, 1, int.MaxValue },
@@ -110,15 +110,15 @@ public class Tests
 
     public static IEnumerable<object[]> GetStringTestData =>
         new[] {
-            new object[] { null, "test", "test" },
-            new object[] { "test", null, "test" },
-            new object[] { int.MinValue, null, Convert.ToString(int.MinValue) },
-            new object[] { int.MaxValue, null, Convert.ToString(int.MaxValue) },
-            new object[] { long.MinValue, null, Convert.ToString(long.MinValue) },
-            new object[] { long.MaxValue, null, Convert.ToString(long.MaxValue) },
-            new object[] { decimal.MinValue, null, Convert.ToString(decimal.MinValue) },
-            new object[] { decimal.MaxValue, null, Convert.ToString(decimal.MaxValue) },
-            new object[] { DateTime.MinValue, null, Convert.ToString(DateTime.MinValue) },
+            new object[] { null!, "test", "test" },
+            new object[] { "test", null!, "test" },
+            new object[] { int.MinValue, null!, Convert.ToString(int.MinValue) },
+            new object[] { int.MaxValue, null!, Convert.ToString(int.MaxValue) },
+            new object[] { long.MinValue, null!, Convert.ToString(long.MinValue) },
+            new object[] { long.MaxValue, null!, Convert.ToString(long.MaxValue) },
+            new object[] { decimal.MinValue, null!, Convert.ToString(decimal.MinValue) },
+            new object[] { decimal.MaxValue, null!, Convert.ToString(decimal.MaxValue) },
+            new object[] { DateTime.MinValue, null!, Convert.ToString(DateTime.MinValue) },
         };
 
     [TestMethod]
@@ -155,7 +155,7 @@ public class Tests
             new object[] { double.MaxValue, false },
             new object[] { decimal.MinValue, false },
             new object[] { decimal.MaxValue, false },
-            new object[] { null, false },
+            new object[] { null!, false },
             new object[] { "2023-13-01", false },
             new object[] { "February 29, 2024", true },
             new object[] { DateTime.MinValue, true },

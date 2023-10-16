@@ -145,6 +145,34 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> IsDateTimeTestData =>
+        new[] {
+            new object[] { int.MinValue, false },
+            new object[] { int.MaxValue, false },
+            new object[] { long.MinValue, false },
+            new object[] { long.MaxValue, false },
+            new object[] { double.MinValue, false },
+            new object[] { double.MaxValue, false },
+            new object[] { decimal.MinValue, false },
+            new object[] { decimal.MaxValue, false },
+            new object[] { null, false },
+            new object[] { "2023-13-01", false },
+            new object[] { "February 29, 2024", true },
+            new object[] { DateTime.MinValue, true },
+            new object[] { DateTime.MaxValue, true },
+            new object[] { "16/05/2023", true },
+            new object[] { "2023/05/16", true },
+            new object[] { "2023-10-17 10:00:00", true },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(IsDateTimeTestData))]
+    public void IsDateTimeTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsDateTime(x);
+        Assert.AreEqual(expected, actual);
+    }
+
     [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]

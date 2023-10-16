@@ -116,6 +116,22 @@ public class ValidationHelper
     }
 
     /// <summary>
+    /// This function returns true if the value is a datetime, or it returns false.
+    /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object can be interpreted as a datetime value; otherwise, it returns false.</returns>
+    public static bool IsDateTime(object value)
+    {
+        if (IsNull(value))
+            return false;
+
+        if (value is DateTime)
+            return true;
+
+        return DateTime.TryParse(value.ToString(), out _);
+    }
+
+    /// <summary>
     /// This function returns true if the value is a decimal, or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>

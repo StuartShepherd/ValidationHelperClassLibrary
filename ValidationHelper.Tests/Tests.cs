@@ -22,6 +22,33 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> GetDateTimeTestData =>
+        new[] {            
+            new object[] { int.MinValue, DateTime.MinValue, DateTime.MinValue },
+            new object[] { int.MaxValue, DateTime.MaxValue, DateTime.MaxValue },
+            new object[] { long.MinValue, DateTime.MinValue, DateTime.MinValue },
+            new object[] { long.MaxValue, DateTime.MaxValue, DateTime.MaxValue },
+            new object[] { decimal.MinValue, DateTime.MinValue, DateTime.MinValue },
+            new object[] { decimal.MaxValue, DateTime.MaxValue, DateTime.MaxValue },
+            new object[] { DateTime.MinValue, DateTime.MinValue, DateTime.MinValue },
+            new object[] { DateTime.MaxValue, DateTime.MaxValue, DateTime.MaxValue },
+            new object[] { null!, DateTime.MinValue, DateTime.MinValue },
+            new object[] { "test", DateTime.MinValue, DateTime.MinValue },
+            new object[] { "2023-13-01", DateTime.MinValue, DateTime.MinValue },
+            new object[] { "February 29, 2024", DateTime.MinValue, new DateTime(2024, 02, 29) },
+            new object[] { "16/05/2023", DateTime.MinValue, new DateTime(2023, 05, 16) },
+            new object[] { "2023/05/16", DateTime.MinValue, new DateTime(2023, 05, 16) },
+            new object[] { "2023-10-17 10:00:00", DateTime.MinValue, new DateTime(2023, 10, 17, 10, 0, 0) },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetDateTimeTestData))]
+    public void GetDateTimeTest(object x, DateTime y, DateTime expected)
+    {
+        var actual = ValidationHelper.GetDateTime(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
     public static IEnumerable<object[]> GetDecimalTestData =>
         new[] {
             new object[] { null!, 1m, 1m },

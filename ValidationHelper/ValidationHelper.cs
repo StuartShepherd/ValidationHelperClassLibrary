@@ -42,6 +42,32 @@ public class ValidationHelper
     }
 
     /// <summary>
+    /// This function returns a datetime representation of an object. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    /// <param name="value">Value to convert</param>
+    /// <param name="defaultValue">Default value</param>
+    /// <returns>Datetime representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
+    public static DateTime GetDateTime(object value, DateTime defaultValue)
+    {
+        if (IsNull(value))
+            return defaultValue;
+
+        if (IsDateTime(value))
+            return Convert.ToDateTime(value);
+
+        DateTime dateTime;
+        try
+        {
+            dateTime = DateTime.Parse(value.ToString()!);
+        }
+        catch
+        {
+            dateTime = defaultValue;
+        }
+        return dateTime;
+    }
+
+    /// <summary>
     /// This function returns a decimal representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     /// <param name="value">The object to convert.</param>

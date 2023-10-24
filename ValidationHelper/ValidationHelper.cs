@@ -123,6 +123,23 @@ public class ValidationHelper
             : Convert.ToString(value)!;
 
     /// <summary>
+    /// This function returns a formatted string representation of an object. If the format is null or empty, the function calls the default GetString function. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <param name="format">The format value.</param>
+    /// <returns>Formatted string representation of an object. If the format is null or empty, the function calls the default GetString function. If the conversion is not possible, it returns the specified default value.</returns>
+    public static string GetString(object value, string defaultValue, string format)
+    {
+        if (IsNull(format))
+            return GetString(value, defaultValue);
+
+        return IsNull(value)
+            ? defaultValue
+            : String.Format(format, value);
+    }
+
+    /// <summary>
     /// This function returns true if the value is a boolean, or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>

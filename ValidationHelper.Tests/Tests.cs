@@ -156,6 +156,22 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> GetStringFormatTestData =>
+        new[] {
+            new object[] { "20", null!, "Number is {0}", "Number is 20" },
+            new object[] { "Stuart", null!, "My name is {0}", "My name is Stuart" },
+            new object[] { "Stuart", "Shepherd", null!, "Stuart" },
+            new object[] { null!, "Shepherd", null!, "Shepherd" },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetStringFormatTestData))]
+    public void GetStringFormatTest(object x, string y, string z, string expected)
+    {
+        var actual = ValidationHelper.GetString(x, y, z);
+        Assert.AreEqual(expected, actual);
+    }
+
     [DataTestMethod]
     [DataRow(null, false)]
     [DataRow(2, false)]

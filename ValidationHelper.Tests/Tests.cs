@@ -16,7 +16,7 @@ public class Tests
     [DataRow("true", true, true)]
     [DataRow(false, true, false)]
     [DataRow(false, false, false)]
-    public void GetBooleanTest(object x, bool y, bool expected)
+    public void GetBoolean_FromDataRowTest(object x, bool y, bool expected)
     {
         var actual = ValidationHelper.GetBoolean(x, y);
         Assert.AreEqual(expected, actual);
@@ -43,7 +43,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetDateTimeTestData))]
-    public void GetDateTimeTest(object x, DateTime y, DateTime expected)
+    public void GetDateTime_FromDynamicDataTest(object x, DateTime y, DateTime expected)
     {
         var actual = ValidationHelper.GetDateTime(x, y);
         Assert.AreEqual(expected, actual);
@@ -63,7 +63,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetDecimalTestData))]
-    public void GetDecimalTest(object x, decimal y, decimal expected)
+    public void GetDecimal_FromDynamicDataTest(object x, decimal y, decimal expected)
     {
         var actual = ValidationHelper.GetDecimal(x, y);
         Assert.AreEqual(expected, actual);
@@ -85,7 +85,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetDoubleTestData))]
-    public void GetDoubleTest(object x, double y, double expected)
+    public void GetDouble_FromDynamicDataTest(object x, double y, double expected)
     {
         var actual = ValidationHelper.GetDouble(x, y);
         Assert.AreEqual(expected, actual);
@@ -107,7 +107,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetIntegerTestData))]
-    public void GetIntegerTest(object x, int y, int expected)
+    public void GetInteger_FromDynamicDataTest(object x, int y, int expected)
     {
         var actual = ValidationHelper.GetInteger(x, y);
         Assert.AreEqual(expected, actual);
@@ -129,7 +129,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetLongTestData))]
-    public void GetLongTest(object x, long y, long expected)
+    public void GetLong_FromDynamicDataTest(object x, long y, long expected)
     {
         var actual = ValidationHelper.GetLong(x, y);
         Assert.AreEqual(expected, actual);
@@ -150,7 +150,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetStringTestData))]
-    public void GetStringTest(object x, string y, string expected)
+    public void GetString_FromDynamicDataTest(object x, string y, string expected)
     {
         var actual = ValidationHelper.GetString(x, y);
         Assert.AreEqual(expected, actual);
@@ -166,7 +166,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(GetStringFormatTestData))]
-    public void GetStringFormatTest(object x, string y, string z, string expected)
+    public void GetStringFormat_FromDynamicDataTest(object x, string y, string z, string expected)
     {
         var actual = ValidationHelper.GetString(x, y, z);
         Assert.AreEqual(expected, actual);
@@ -182,7 +182,7 @@ public class Tests
     [DataRow("true", true)]
     [DataRow(true, true)]
     [DataRow(false, true)]
-    public void IsBooleanTest(object x, bool expected)
+    public void IsBoolean_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsBoolean(x);
         Assert.AreEqual(expected, actual);
@@ -210,7 +210,7 @@ public class Tests
 
     [TestMethod]
     [DynamicData(nameof(IsDateTimeTestData))]
-    public void IsDateTimeTest(object x, bool expected)
+    public void IsDateTime_FromDynamicDataTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsDateTime(x);
         Assert.AreEqual(expected, actual);
@@ -226,7 +226,7 @@ public class Tests
     [DataRow(long.MaxValue, true)]
     [DataRow(double.MinValue, false)]
     [DataRow(double.MaxValue, false)]
-    public void IsDecimalTest(object x, bool expected)
+    public void IsDecimal_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsDecimal(x);
         Assert.AreEqual(expected, actual);
@@ -242,7 +242,7 @@ public class Tests
     [DataRow(long.MaxValue, true)]
     [DataRow(double.MinValue, true)]
     [DataRow(double.MaxValue, true)]
-    public void IsDoubleTest(object x, bool expected)
+    public void IsDouble_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsDouble(x);
         Assert.AreEqual(expected, actual);
@@ -258,7 +258,7 @@ public class Tests
     [DataRow(long.MaxValue, false)]
     [DataRow(double.MinValue, false)]
     [DataRow(double.MaxValue, false)]
-    public void IsIntegerTest(object x, bool expected)
+    public void IsInteger_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsInteger(x);
         Assert.AreEqual(expected, actual);
@@ -274,7 +274,7 @@ public class Tests
     [DataRow(long.MaxValue, true)]
     [DataRow(double.MinValue, false)]
     [DataRow(double.MaxValue, false)]
-    public void IsLongTest(object x, bool expected)
+    public void IsLong_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsLong(x);
         Assert.AreEqual(expected, actual);
@@ -287,7 +287,7 @@ public class Tests
     [DataRow("null", false)]
     [DataRow("", false)]
     [DataRow(null, true)]
-    public void IsNullTest(object x, bool expected)
+    public void IsNull_FromDataRowTest(object x, bool expected)
     {
         var actual = ValidationHelper.IsNull(x);
         Assert.AreEqual(expected, actual);

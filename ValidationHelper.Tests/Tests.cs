@@ -251,6 +251,16 @@ public class Tests
     [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]
+    [DataRow("a5c4c4cb-67f8-407d-8fa7-f59372e5b820", true)]
+    public void IsGuid_FromDataRowTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsGuid(x);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [DataTestMethod]
+    [DataRow(null, false)]
+    [DataRow("test", false)]
     [DataRow(3.1415926535, false)]
     [DataRow(int.MinValue, true)]
     [DataRow(int.MaxValue, true)]

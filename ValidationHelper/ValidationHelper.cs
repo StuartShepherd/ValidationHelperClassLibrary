@@ -195,6 +195,26 @@ public class ValidationHelper
             : double.TryParse(Convert.ToString(value), out _);
 
     /// <summary>
+    /// This function returns true if the value is a guid, or it returns false.
+    /// </summary>
+    /// <param name="value">The object to evaluate.</param> 
+    /// <returns>True if the specified object can be interpreted as a guid value; otherwise, it returns false.</returns>
+    public static bool IsGuid(object value)
+    {
+        if (IsNull(value))
+            return false;
+
+        if (value is Guid)
+            return true;
+
+        var stringValue = value.ToString();
+        if (stringValue!.Length != 36)
+            return false;
+
+        return Guid.TryParse(stringValue, out _);
+    }
+
+    /// <summary>
     /// This function returns true if the value is an integer, or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>

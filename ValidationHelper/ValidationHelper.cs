@@ -90,6 +90,17 @@ public class ValidationHelper
             : defaultValue;
 
     /// <summary>
+    /// This function returns a guid representation of an object. If the conversion is not possible, it returns the specified default value.
+    /// </summary>
+    /// <param name="value">The object to convert.</param>
+    /// <param name="defaultValue">The default value to return if conversion fails.</param>
+    /// <returns>Guid representation of an object. If the conversion is not possible, it returns the specified default value.</returns>
+    public static Guid GetGuid(object value, Guid defaultValue) =>
+        IsGuid(value)
+            ? new Guid(value.ToString()!)
+            : defaultValue;
+
+    /// <summary>
     /// This function returns an integer representation of an object. If the conversion is not possible, it returns the specified default value.
     /// </summary>
     /// <param name="value">The object to convert.</param>

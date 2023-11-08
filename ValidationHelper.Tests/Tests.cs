@@ -91,6 +91,21 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> GetGuidTestData =>
+        new[] {
+                new object[] { null!, new Guid("a5c4c4cb-67f8-407d-8fa7-f59372e5b820"), new Guid("a5c4c4cb-67f8-407d-8fa7-f59372e5b820") },
+                new object[] { "test", new Guid("a5c4c4cb-67f8-407d-8fa7-f59372e5b820"), new Guid("a5c4c4cb-67f8-407d-8fa7-f59372e5b820") },
+                new object[] { "a5c4c4cb-67f8-407d-8fa7-f59372e5b820", new Guid("0fe38975-f6cd-4ba1-acfb-1cefa9d9c13b"), new Guid("a5c4c4cb-67f8-407d-8fa7-f59372e5b820") },
+        };
+
+    [TestMethod]
+    [DynamicData(nameof(GetGuidTestData))]
+    public void GetGuid_FromDynamicDataTest(object x, Guid y, Guid expected)
+    {
+        var actual = ValidationHelper.GetGuid(x, y);
+        Assert.AreEqual(expected, actual);
+    }
+
     public static IEnumerable<object[]> GetIntegerTestData =>
         new[] {
             new object[] { null!, 1, 1 },

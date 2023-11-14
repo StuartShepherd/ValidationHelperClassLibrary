@@ -290,6 +290,20 @@ public class Tests
     }
 
     [DataTestMethod]
+    [DataRow(1, 10, 12, false)]
+    [DataRow(10, 100, 120, false)]
+    [DataRow(-200, 200, -300, false)]
+    [DataRow(300, 200, 100, false)]
+    [DataRow(1, 10, 5, true)]
+    [DataRow(10, 100, 50, true)]
+    [DataRow(-200, 200, 100, true)]    
+    public void IsInRange_Integer_FromDataRowTest(int x, int y, int z, bool expected)
+    {
+        var actual = ValidationHelper.IsInRange(x, y, z);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]
     [DataRow(3.1415926535, false)]

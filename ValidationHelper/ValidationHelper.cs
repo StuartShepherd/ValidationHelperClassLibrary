@@ -236,6 +236,18 @@ public class ValidationHelper
             : int.TryParse(Convert.ToString(value), out _);
 
     /// <summary>
+    /// This function returns true if the value is within a specified range, or it returns false.
+    /// </summary>
+    /// <param name="min">The minimum value of the range.</param>
+    /// <param name="max">The maximum value of the range.</param>
+    /// <param name="value">The value to evaluate.</param>
+    /// <returns>True if the value is within a specified range; otherwise, it returns false.</returns>
+    public static bool IsInRange(int min, int max, int value) =>
+        value < min
+            ? false
+            : value <= max;
+
+    /// <summary>
     /// This function returns true if the value is a long, or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>

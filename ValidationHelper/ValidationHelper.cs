@@ -243,9 +243,7 @@ public class ValidationHelper
     /// <param name="value">The value to evaluate.</param>
     /// <returns>True if the value is within a specified range; otherwise, it returns false.</returns>
     public static bool IsInRange(int min, int max, int value) =>
-        value < min
-            ? false
-            : value <= max;
+        min <= value && value <= max;
 
     /// <summary>
     /// This function returns true if the value is a long, or it returns false.

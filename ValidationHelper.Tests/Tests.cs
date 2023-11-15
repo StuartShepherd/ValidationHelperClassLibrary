@@ -304,6 +304,20 @@ public class Tests
     }
 
     [DataTestMethod]
+    [DataRow(1.5, 2.5, 1.0, false)]
+    [DataRow(100.25, 200.50, 50.50, false)]
+    [DataRow(3000, 1000, 2000, false)]
+    [DataRow(1.5, 2.5, 2.0, true)]
+    [DataRow(100.25, 200.50, 200.25, true)]
+    [DataRow(-1000.50, 2000.50, 1000, true)]
+    [DataRow(-1000.50, 2000.50, -1000, true)]    
+    public void IsInRange_Double_FromDataRowTest(double x, double y, double z, bool expected)
+    {
+        var actual = ValidationHelper.IsInRange(x, y, z);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]
     [DataRow(3.1415926535, false)]

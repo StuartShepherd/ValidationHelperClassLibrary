@@ -23,7 +23,7 @@
 ## Tech Stack
 
 **Framework:** 
-- NetCore .Net 7
+- NetCore .Net 8
 
 **Packages**  
 - coverlet.collector (3.2.0)

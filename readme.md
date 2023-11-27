@@ -26,10 +26,10 @@
 - NetCore .Net 8
 
 **Packages**  
-- coverlet.collector (3.2.0)
-- Microsoft.NET.Test.Sdk (17.6.0)
-- MSTest.TestAdapter (2.2.10)
-- MSTest.TestFramework (2.2.10)
+- coverlet.collector (6.0)
+- Microsoft.NET.Test.Sdk (17.8.0)
+- MSTest.TestAdapter (3.1.1)
+- MSTest.TestFramework (3.1.1)
 
 <details>
 <summary>

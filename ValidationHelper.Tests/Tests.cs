@@ -317,6 +317,24 @@ public class Tests
         Assert.AreEqual(expected, actual);
     }
 
+    public static IEnumerable<object[]> GetInRangeDecimalTestData =>
+        new[] {
+                new object[] { 1.5m, 2.5m, 1m, false },
+                new object[] { 100.25m, 200.50m, 50.50m, false },
+                new object[] { 1.5m, 2.5m, 2m, true },
+                new object[] { 100.25m, 200.50m, 200.25m, true },
+                new object[] { -1000.50m, 2000.50m, 1000m, true },
+                new object[] { decimal.MinValue, decimal.MaxValue, 100m, true },
+        };
+
+    [DataTestMethod]
+    [DynamicData(nameof(GetInRangeDecimalTestData))]
+    public void IsInRange_Decimal_FromDynamicDataTest(decimal x, decimal y, decimal z, bool expected)
+    {
+        var actual = ValidationHelper.IsInRange(x, y, z);
+        Assert.AreEqual(expected, actual);
+    }
+
     [DataTestMethod]
     [DataRow(null, false)]
     [DataRow("test", false)]

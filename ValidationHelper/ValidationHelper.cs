@@ -284,6 +284,22 @@ public class ValidationHelper
         value is null;
 
     /// <summary>
+    /// This function returns true if the value is a positive number, or it returns false.    
+    /// </summary>
+    /// <param name="value">The object to evaluate.</param>
+    /// <returns>True if the specified object is a positive number; otherwise, it returns false.</returns>    
+    public static bool IsPositiveNumber(object value)
+    {
+        if (IsNull(value))
+            return false;
+
+        if (GetDouble(value, -1) >= 0)
+            return true;
+
+        return GetDecimal(value, -1) >= decimal.Zero;
+    }
+
+    /// <summary>
     /// This function returns true for "true", "1", "false" or "0", or it returns false.
     /// </summary>
     /// <param name="value">The object to evaluate.</param>

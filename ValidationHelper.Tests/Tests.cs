@@ -363,4 +363,18 @@ public class Tests
         var actual = ValidationHelper.IsNull(x);
         Assert.AreEqual(expected, actual);
     }
+
+    [DataTestMethod]
+    [DataRow(null, false)]
+    [DataRow("test", false)]
+    [DataRow(-1, false)]
+    [DataRow(0, true)]
+    [DataRow(1, true)]
+    [DataRow(10, true)]
+    [DataRow(100, true)]
+    public void IsPositive_FromDataRowTest(object x, bool expected)
+    {
+        var actual = ValidationHelper.IsPositiveNumber(x);
+        Assert.AreEqual(expected, actual);
+    }
 }
